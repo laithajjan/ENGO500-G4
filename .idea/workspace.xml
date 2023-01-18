@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9c76376-d2c6-4e09-afcf-3fbbd9ed67f4" name="Changes" comment="New directories and main files" />
+    <list default="true" id="e9c76376-d2c6-4e09-afcf-3fbbd9ed67f4" name="Changes" comment="New directories and main files with empty class to show directories on github" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,8 +38,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/Connor/PycharmProjects/ENGO500-G4",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
@@ -89,13 +91,21 @@
       <option name="project" value="LOCAL" />
       <updated>1673652001330</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="New directories and main files with empty class to show directories on github">
+      <created>1673652205940</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673652205940</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test file- Hello World" />
     <MESSAGE value="Data Preprocessing, ModelTraining, ModelValidation directories" />
     <MESSAGE value="New directories and main files" />
-    <option name="LAST_COMMIT_MESSAGE" value="New directories and main files" />
+    <MESSAGE value="New directories and main files with empty class to show directories on github" />
+    <option name="LAST_COMMIT_MESSAGE" value="New directories and main files with empty class to show directories on github" />
   </component>
 </project>
