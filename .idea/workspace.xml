@@ -41,13 +41,13 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/Connor/PycharmProjects/ENGO500-G4",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\Data\UnprocessedData" />
       <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4" />
       <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\DataPreprocessing" />
       <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\DataPreprocessing\Classes" />
@@ -98,7 +98,21 @@
       <option name="project" value="LOCAL" />
       <updated>1673652205940</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="New directories and main files with empty class to show directories on github">
+      <created>1674001205489</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1674001205489</updated>
+    </task>
+    <task id="LOCAL-00007" summary="New directories and main files with empty class to show directories on github">
+      <created>1674001335633</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1674001335633</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
