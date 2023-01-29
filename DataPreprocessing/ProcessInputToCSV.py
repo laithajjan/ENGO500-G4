@@ -1,11 +1,12 @@
 import pandas as pd
-
-inputDir = "inputXLSX/"
-outputDir = "Data/UnprocessedData/"
-
-#Get file name of all files in given directory
 from os import listdir
 from os.path import isfile, join
+
+
+inputDir = "../inputXLSX/"
+outputDir = "../Data/UnprocessedData/"
+
+#Get file name of all files in given directory
 filesOnly = [f for f in listdir(inputDir) if isfile(join(inputDir, f))]
 
 for file in filesOnly:

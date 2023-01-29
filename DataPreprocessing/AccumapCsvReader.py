@@ -20,7 +20,7 @@ class AccumapCsvReader:  # untested
         return data[8:, :]
 
     def loadFormattedAccumapCsv(self, file_name):
-        return self.formatAccumapData(self.readCsv(file_name))
+        return self.formatAccumapData(self.loadCsv(file_name))
 
     def loadAllAccumapDataFromFolder(self):
 
