@@ -1,15 +1,17 @@
-import AccumapCsvReader
+from os.path import join
+import AccumapCsvProcessor
+import pandas as pd
+import numpy as np
+from os import listdir
 
 # Script to perform Data preprocessing
 
-# Read in the data from unprocessed csv downloaded from Accumap, probably best to read all .csv file in a folder together
-# Script to perform Data preprocessing
-inputDir = "../Data/UnprocessedData/"
-outputDir = "../Data/ProcessedData/"
+# Setting the input and output directories
+input_directory = "../Data/UnprocessedData/"
+output_directory = "../Data/ProcessedData/"
 
-# Read in the data from unprocessed csv downloaded from Accumap, probably best to read all .csv file in a folder together
-testDir = "../Data/UnprocessedData/ath_hanging.csv"
+# Create a new AccumapCsvPreprocessor with the input and output directories
+accumapCsvProcessor = AccumapCsvProcessor.AccumapCsvProcessor(input_directory, output_directory, debug_printing=True)
 
-accumapCsvReader = AccumapCsvReader.AccumapCsvReader(inputDir)
-
-accumapCsvReader.loadCsv(testDir)
+# Run the preprocessing for the set directories
+accumapCsvProcessor.preprocessSetDirectory()

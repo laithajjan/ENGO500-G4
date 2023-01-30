@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9c76376-d2c6-4e09-afcf-3fbbd9ed67f4" name="Changes" comment="Restructured files to avoid errors that occurred because of the directories not being python modules. &#10;Each directory should contain their relevant python modules now.&#10;Small changes to update paths in the ProcessInputToCSV.py and reformatted the input structure for readability." />
+    <list default="true" id="e9c76376-d2c6-4e09-afcf-3fbbd9ed67f4" name="Changes" comment="Restructured files to avoid errors that occurred because of the directories not being python modules. &#10;Each directory should contain their relevant python modules now.&#10;Small changes to update paths in the ProcessInputToCSV.py and reformatted the input structure for readability.">
+      <change afterPath="$PROJECT_DIR$/DataPreprocessing/AccumapCsvProcessor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ProcessedData/ProcessedData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/UnprocessedData/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/UnprocessedData/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPreprocessing/AccumapCsvReader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPreprocessing/DataPreprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessing/DataPreprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPreprocessing/ProcessInputToCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessing/ProcessInputToCSV.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,15 +44,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Connor/PycharmProjects/ENGO500-G4/DataPreprocessing/Script",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Connor/PycharmProjects/ENGO500-G4/DataPreprocessing/Script&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\DataPreprocessing\Script" />
@@ -132,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674956148393</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Restructured files to avoid errors that occurred because of the directories not being python modules. &#10;Each directory should contain their relevant python modules now.&#10;Small changes to update paths in the ProcessInputToCSV.py and reformatted the input structure for readability.">
+      <created>1674956313468</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1674956313468</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
