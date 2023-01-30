@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9c76376-d2c6-4e09-afcf-3fbbd9ed67f4" name="Changes" comment="Restructured files to avoid errors that occurred because of the directories not being python modules. &#10;Each directory should contain their relevant python modules now.&#10;Small changes to update paths in the ProcessInputToCSV.py and reformatted the input structure for readability.">
-      <change afterPath="$PROJECT_DIR$/DataPreprocessing/AccumapCsvProcessor.py" afterDir="false" />
+    <list default="true" id="e9c76376-d2c6-4e09-afcf-3fbbd9ed67f4" name="Changes" comment="DataPreprocessing.py is now complete. (reads entire folder and processes and saves). Code tested&#10;AccumapCsvProcessor.py - changed from reader to processor as it now loads, processes, and saves. Code tested">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ProcessedData/ProcessedData" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/UnprocessedData/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/UnprocessedData/test.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataPreprocessing/AccumapCsvReader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ProcessedData/ath_hanging.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ProcessedData/ath_hanging.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPreprocessing/AccumapCsvProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessing/AccumapCsvProcessor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataPreprocessing/DataPreprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessing/DataPreprocessing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataPreprocessing/ProcessInputToCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessing/ProcessInputToCSV.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674956313468</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="DataPreprocessing.py is now complete. (reads entire folder and processes and saves). Code tested&#10;AccumapCsvProcessor.py - changed from reader to processor as it now loads, processes, and saves. Code tested">
+      <created>1675053526751</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1675053526751</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,6 +171,7 @@
     <MESSAGE value="New directories and main files" />
     <MESSAGE value="New directories and main files with empty class to show directories on github" />
     <MESSAGE value="Restructured files to avoid errors that occurred because of the directories not being python modules. &#10;Each directory should contain their relevant python modules now.&#10;Small changes to update paths in the ProcessInputToCSV.py and reformatted the input structure for readability." />
-    <option name="LAST_COMMIT_MESSAGE" value="Restructured files to avoid errors that occurred because of the directories not being python modules. &#10;Each directory should contain their relevant python modules now.&#10;Small changes to update paths in the ProcessInputToCSV.py and reformatted the input structure for readability." />
+    <MESSAGE value="DataPreprocessing.py is now complete. (reads entire folder and processes and saves). Code tested&#10;AccumapCsvProcessor.py - changed from reader to processor as it now loads, processes, and saves. Code tested" />
+    <option name="LAST_COMMIT_MESSAGE" value="DataPreprocessing.py is now complete. (reads entire folder and processes and saves). Code tested&#10;AccumapCsvProcessor.py - changed from reader to processor as it now loads, processes, and saves. Code tested" />
   </component>
 </project>

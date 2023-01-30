@@ -5,7 +5,7 @@ import pandas as pd
 
 
 class AccumapCsvProcessor:  # untested
-    def __init__(self, input_directory, output_directory, start_row=8, debug_printing=False):
+    def __init__(self, input_directory, output_directory, start_row=8, debug_printing=False, feature_list=None):
         # Class constructor
 
         # Set the directories to be used
@@ -18,7 +18,11 @@ class AccumapCsvProcessor:  # untested
         # Set debug_printing printing
         self.debug_printing = debug_printing
 
+        # Counter to see how many files are preprocessed from a directory
         self.preprocessed_file_count = 0
+
+        # Column numbers to extract from the data
+        self.feature_list = feature_list
 
         return
 
@@ -64,6 +68,8 @@ class AccumapCsvProcessor:  # untested
 
         return
 
+    def trimFeatures(self, data):
+        return data[:, self.feature_list]
     def preprocessFile(self, filename):
         self.debugPrint("Preprocessing " + filename)
         # Load the csv file into a numpy array
@@ -71,6 +77,9 @@ class AccumapCsvProcessor:  # untested
 
         # Format from Accumap to header-less data
         file_data = self.formatAccumapData(file_data, self.start_row)
+
+        # Trim the data to contain only the desired features
+        file_data = self.trimFeatures(file_data)
 
         # Save the formatted data as a csv in the output directory
         self.saveNumpyAsCsv(filename, file_data)
