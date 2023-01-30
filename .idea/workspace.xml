@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9c76376-d2c6-4e09-afcf-3fbbd9ed67f4" name="Changes" comment="DataPreprocessing.py is now complete. (reads entire folder and processes and saves). Code tested&#10;AccumapCsvProcessor.py - changed from reader to processor as it now loads, processes, and saves. Code tested">
+    <list default="true" id="e9c76376-d2c6-4e09-afcf-3fbbd9ed67f4" name="Changes" comment="DataPreprocessing.py and AccumapCsvProcessor.py handle specific feature selection now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/ProcessedData/ath_hanging.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ProcessedData/ath_hanging.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ProcessedData/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/UnprocessedData/ath_hanging.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/UnprocessedData/ath_hanging.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/UnprocessedData/test.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DataPreprocessing/AccumapCsvProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessing/AccumapCsvProcessor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataPreprocessing/DataPreprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessing/DataPreprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPreprocessing/ProcessInputToCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessing/ProcessInputToCSV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InputXLSX/ath_hanging.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/InputXLSX/ath_hanging.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InputXLSX/test.xlsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +157,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675053526751</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="DataPreprocessing.py and AccumapCsvProcessor.py handle specific feature selection now">
+      <created>1675055147742</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1675055147742</updated>
+    </task>
+    <task id="LOCAL-00013" summary="DataPreprocessing.py and AccumapCsvProcessor.py handle specific feature selection now">
+      <created>1675055162858</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1675055162858</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,6 +192,8 @@
     <MESSAGE value="New directories and main files with empty class to show directories on github" />
     <MESSAGE value="Restructured files to avoid errors that occurred because of the directories not being python modules. &#10;Each directory should contain their relevant python modules now.&#10;Small changes to update paths in the ProcessInputToCSV.py and reformatted the input structure for readability." />
     <MESSAGE value="DataPreprocessing.py is now complete. (reads entire folder and processes and saves). Code tested&#10;AccumapCsvProcessor.py - changed from reader to processor as it now loads, processes, and saves. Code tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="DataPreprocessing.py is now complete. (reads entire folder and processes and saves). Code tested&#10;AccumapCsvProcessor.py - changed from reader to processor as it now loads, processes, and saves. Code tested" />
+    <MESSAGE value="DataPreprocessing.py and AccumapCsvProcessor.py handle specific feature selection now. tested" />
+    <MESSAGE value="DataPreprocessing.py and AccumapCsvProcessor.py handle specific feature selection now" />
+    <option name="LAST_COMMIT_MESSAGE" value="DataPreprocessing.py and AccumapCsvProcessor.py handle specific feature selection now" />
   </component>
 </project>

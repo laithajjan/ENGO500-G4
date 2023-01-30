@@ -18,4 +18,4 @@ for file in filesOnly:
     fileName = file.split(".")[0]
 
     # Write the dataframe object into csv file
-    read_file.to_csv(outputDir+fileName+".csv", index=None, header=True)
+    read_file.to_csv(outputDir+fileName+".csv", index=False, header=True)

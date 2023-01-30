@@ -5,7 +5,8 @@ import pandas as pd
 
 
 class AccumapCsvProcessor:  # untested
-    def __init__(self, input_directory, output_directory, start_row=8, debug_printing=False, feature_list=None):
+    def __init__(self, input_directory, output_directory, start_row=8, debug_printing=False, feature_list=None,
+                 steady_state_only=True, steady_state_months_required=6, max_change_percent=30):
         # Class constructor
 
         # Set the directories to be used
@@ -23,6 +24,15 @@ class AccumapCsvProcessor:  # untested
 
         # Column numbers to extract from the data
         self.feature_list = feature_list
+
+        # Boolean to only use steady state values. Default=True
+        self.steady_state_only = steady_state_only
+
+        # Months of steady state required
+        self.steady_state_months_required = steady_state_months_required
+
+        # Maximum monthly percent change in data to consider steady state
+        self.max_change_percent = max_change_percent
 
         return
 
@@ -47,7 +57,7 @@ class AccumapCsvProcessor:  # untested
 
     def saveNumpyAsCsv(self, filename, data):
         # Convert to pd DataFrame, then convert to csv, save to output directory with no header
-        pd.DataFrame(data).to_csv(self.output_directory + filename, index=None, header=None)
+        pd.DataFrame(data).to_csv(self.output_directory + filename, header=False, index=False)
 
         return
 
@@ -70,6 +80,34 @@ class AccumapCsvProcessor:  # untested
 
     def trimFeatures(self, data):
         return data[:, self.feature_list]
+
+    def trimSteadyState(self, data):
+        steam_injected_column = data[:, 0]
+        last_value = float(steam_injected_column[0])
+        percent_list = [999]
+
+        for value in steam_injected_column[1:]:
+            value = float(value)
+            last_value = float(last_value)
+
+            if value == 0:
+                percent_change = 999
+            else:
+                percent_change = abs((value - last_value)/value*100)
+
+            percent_list.append(percent_change)
+            last_value = value
+
+        trimmed_data = []
+        trimmed_data_index = 0
+
+        for index, percent in enumerate(percent_list):
+            if percent <= self.max_change_percent:
+                trimmed_data.append(data[index, :])
+                trimmed_data_index += 1
+
+        return trimmed_data
+
     def preprocessFile(self, filename):
         self.debugPrint("Preprocessing " + filename)
         # Load the csv file into a numpy array
@@ -80,6 +118,10 @@ class AccumapCsvProcessor:  # untested
 
         # Trim the data to contain only the desired features
         file_data = self.trimFeatures(file_data)
+
+        # Trim the data to only include steady_state numbers
+        if self.steady_state_only:
+            file_data = self.trimSteadyState(file_data)
 
         # Save the formatted data as a csv in the output directory
         self.saveNumpyAsCsv(filename, file_data)
