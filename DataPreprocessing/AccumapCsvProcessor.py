@@ -5,8 +5,8 @@ import pandas as pd
 
 
 class AccumapCsvProcessor:  # untested
-    def __init__(self, input_directory, output_directory, start_row=8, debug_printing=False, feature_list=None,
-                 steady_state_only=True, steady_state_months_required=6, max_change_percent=30):
+    def __init__(self, input_directory, output_directory, start_row=8, debug_printing=False, feature_list=[10],
+                 steady_state_only=True, max_change_percent=30):
         # Class constructor
 
         # Set the directories to be used
@@ -27,9 +27,6 @@ class AccumapCsvProcessor:  # untested
 
         # Boolean to only use steady state values. Default=True
         self.steady_state_only = steady_state_only
-
-        # Months of steady state required
-        self.steady_state_months_required = steady_state_months_required
 
         # Maximum monthly percent change in data to consider steady state
         self.max_change_percent = max_change_percent
