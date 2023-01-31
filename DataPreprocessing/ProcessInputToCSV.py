@@ -3,7 +3,7 @@ from os import listdir
 from os.path import isfile, join
 
 
-inputDir = "../inputXLSX/"
+inputDir = "../Data/InputXLSX/"
 outputDir = "../Data/UnprocessedData/"
 
 # Get file name of all files in given directory

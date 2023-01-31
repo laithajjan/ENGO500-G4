@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 
-class AccumapCsvProcessor:  # untested
+class AccumapCsvProcessor:
     def __init__(self, input_directory, output_directory, start_row=8, debug_printing=False, feature_list=[10],
                  steady_state_only=True, max_change_percent=30):
         # Class constructor
