@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e9c76376-d2c6-4e09-afcf-3fbbd9ed67f4" name="Changes" comment="Removed the unused steady_state_months variable">
+      <change afterPath="$PROJECT_DIR$/Data/InputXLSX/ath_hanging.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/UnprocessedData/ath_hanging.xlsx - ATH_Hangingstone.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPreprocessing/AccumapCsvProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessing/AccumapCsvProcessor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPreprocessing/DataPreprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessing/DataPreprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPreprocessing/ProcessInputToCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreprocessing/ProcessInputToCSV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InputXLSX/ath_hanging.xlsx" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2K9sX8QyIsAjApEp7ujoTjBXzuB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Connor/PycharmProjects/ENGO500-G4/DataPreprocessing/Script",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\DataPreprocessing\Script" />
+      <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\DataPreprocessing\Classes" />
+      <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\DataPreprocessing" />
+      <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\Data\UnprocessedData" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\DataPreprocessing" />
+      <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\Data\UnprocessedData" />
+      <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4" />
+      <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\DataPreprocessing\Classes" />
+      <recent name="C:\Users\Connor\PycharmProjects\ENGO500-G4\DataPreprocessing\Script" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e9c76376-d2c6-4e09-afcf-3fbbd9ed67f4" name="Changes" comment="" />
+      <created>1673398169714</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673398169714</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Test file- Hello World">
+      <created>1673399165220</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673399165220</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Data Preprocessing, ModelTraining, ModelValidation directories">
+      <created>1673399828110</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1673399828110</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Data Preprocessing, ModelTraining, ModelValidation directories">
+      <created>1673400392938</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673400392938</updated>
+    </task>
+    <task id="LOCAL-00004" summary="New directories and main files">
+      <created>1673652001330</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673652001330</updated>
+    </task>
+    <task id="LOCAL-00005" summary="New directories and main files with empty class to show directories on github">
+      <created>1673652205940</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673652205940</updated>
+    </task>
+    <task id="LOCAL-00006" summary="New directories and main files with empty class to show directories on github">
+      <created>1674001205489</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1674001205489</updated>
+    </task>
+    <task id="LOCAL-00007" summary="New directories and main files with empty class to show directories on github">
+      <created>1674001335633</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1674001335633</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Restructured files to avoid errors that occurred because of the directories not being python modules. &#10;Each directory should contain their relevant python modules now.&#10;Small changes to update paths in the ProcessInputToCSV.py and reformatted the input structure for readability.">
+      <created>1674956084693</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1674956084693</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Restructured files to avoid errors that occurred because of the directories not being python modules. &#10;Each directory should contain their relevant python modules now.&#10;Small changes to update paths in the ProcessInputToCSV.py and reformatted the input structure for readability.">
+      <created>1674956148393</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674956148393</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Restructured files to avoid errors that occurred because of the directories not being python modules. &#10;Each directory should contain their relevant python modules now.&#10;Small changes to update paths in the ProcessInputToCSV.py and reformatted the input structure for readability.">
+      <created>1674956313468</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1674956313468</updated>
+    </task>
+    <task id="LOCAL-00011" summary="DataPreprocessing.py is now complete. (reads entire folder and processes and saves). Code tested&#10;AccumapCsvProcessor.py - changed from reader to processor as it now loads, processes, and saves. Code tested">
+      <created>1675053526751</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1675053526751</updated>
+    </task>
+    <task id="LOCAL-00012" summary="DataPreprocessing.py and AccumapCsvProcessor.py handle specific feature selection now">
+      <created>1675055147742</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1675055147742</updated>
+    </task>
+    <task id="LOCAL-00013" summary="DataPreprocessing.py and AccumapCsvProcessor.py handle specific feature selection now">
+      <created>1675055162858</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1675055162858</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Feature list added and tested&#10;trimSteadyState function added and tested">
+      <created>1675060905552</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1675060905552</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Removed the unused steady_state_months variable">
+      <created>1675061297939</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1675061297939</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Test file- Hello World" />
+    <MESSAGE value="Data Preprocessing, ModelTraining, ModelValidation directories" />
+    <MESSAGE value="New directories and main files" />
+    <MESSAGE value="New directories and main files with empty class to show directories on github" />
+    <MESSAGE value="Restructured files to avoid errors that occurred because of the directories not being python modules. &#10;Each directory should contain their relevant python modules now.&#10;Small changes to update paths in the ProcessInputToCSV.py and reformatted the input structure for readability." />
+    <MESSAGE value="DataPreprocessing.py is now complete. (reads entire folder and processes and saves). Code tested&#10;AccumapCsvProcessor.py - changed from reader to processor as it now loads, processes, and saves. Code tested" />
+    <MESSAGE value="DataPreprocessing.py and AccumapCsvProcessor.py handle specific feature selection now. tested" />
+    <MESSAGE value="DataPreprocessing.py and AccumapCsvProcessor.py handle specific feature selection now" />
+    <MESSAGE value="Feature list added and tested&#10;trimSteadyState function added and tested" />
+    <MESSAGE value="Removed the unused steady_state_months variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed the unused steady_state_months variable" />
+  </component>
+</project>
