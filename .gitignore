@@ -247,3 +247,4 @@ paket-files/
 # Pycharm workspace settings
 vcs.xml
 workspace.xml
+/.idea
