@@ -14,7 +14,7 @@ for file in filesOnly:
     # Read content of Excel file
     read_file = pd.read_excel(inputDir + file, skiprows=[0], header=0)
 
-    #Replace line breaks in column headers with spaces
+    # Replace line breaks in column headers with spaces
     read_file.columns = read_file.columns.str.replace('\n', ' ', regex=True)
 
     # Get file name without extension
@@ -22,4 +22,4 @@ for file in filesOnly:
 
     # Write the dataframe object into csv file
     read_file.to_csv(outputDir+fileName+".csv", index=False)
-    print(type(read_file.columns.values))
+    print('Saved ' + fileName + ' to a csv')

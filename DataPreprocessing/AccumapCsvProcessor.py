@@ -1,12 +1,11 @@
 from os import listdir
 from os.path import isfile, join
-import numpy as np
 import pandas as pd
 
 
 class AccumapCsvProcessor:
-    def __init__(self, input_directory, output_directory, start_row=8, debug_printing=False, feature_list=[10],
-                 steady_state_only=True, max_change_percent=30):
+    def __init__(self, input_directory, output_directory, header_row=0, start_row=1, debug_printing=False,
+                 feature_list=[], steady_state_only=True, max_change_percent=30):
         # Class constructor
 
         # Set the directories to be used
@@ -15,6 +14,8 @@ class AccumapCsvProcessor:
 
         # Set the first row of data without headers
         self.start_row = start_row
+        self.header_row = header_row
+        self.header_row_data = []
 
         # Set debug_printing printing
         self.debug_printing = debug_printing
@@ -33,28 +34,27 @@ class AccumapCsvProcessor:
 
         return
 
-    def loadCsvAsNumpy(self, file_name):
+    def loadCsvAsDataFrame(self, file_name):
         # Read a comma deliminated csv file with file name file_name and return numpy array
 
         # Using pandas read_csv(), setting the delimiter to ',' and header=None, we get a DataFrame from a csv file
-        csv = pd.read_csv(self.input_directory + file_name, sep=',', header=None)
+        csv = pd.read_csv(self.input_directory + file_name, sep=',', header=self.header_row, low_memory=False)
 
         # Change the blank Nan values to 0s
         csv = csv.fillna(0)
+        csv.columns = csv.columns.str.replace(' ', '')
 
         # Returning the DataFrame as a numpy array
-        return np.asarray(csv.to_numpy())
+        return csv
 
-    def formatAccumapData(self, data, start_row):
-        # Format Accumap data into numpy array
+    def formatAccumapData(self, data):
+        formatted_data = data
 
-        # Setting the start row of the data to the first line of actual data
-        formatted_data = data[start_row:]
         return formatted_data
 
-    def saveNumpyAsCsv(self, filename, data):
+    def saveDataFrameAsCsv(self, filename, data):
         # Convert to pd DataFrame, then convert to csv, save to output directory with no header
-        pd.DataFrame(data).to_csv(self.output_directory + filename, header=False, index=False)
+        pd.DataFrame(data).to_csv(self.output_directory + filename, index=False)
 
         return
 
@@ -76,7 +76,8 @@ class AccumapCsvProcessor:
         return
 
     def trimFeatures(self, data):
-        return data[:, self.feature_list]
+        data = data[self.feature_list]
+        return data
 
     def trimSteadyState(self, data):
         steam_injected_column = data[:, 0]
@@ -90,7 +91,7 @@ class AccumapCsvProcessor:
             if value == 0:
                 percent_change = 999
             else:
-                percent_change = abs((value - last_value)/value*100)
+                percent_change = abs((value - last_value) / value * 100)
 
             percent_list.append(percent_change)
             last_value = value
@@ -108,10 +109,14 @@ class AccumapCsvProcessor:
     def preprocessFile(self, filename):
         self.debugPrint("Preprocessing " + filename)
         # Load the csv file into a numpy array
-        file_data = self.loadCsvAsNumpy(filename)
+        file_data = self.loadCsvAsDataFrame(filename)
 
-        # Format from Accumap to header-less data
-        file_data = self.formatAccumapData(file_data, self.start_row)
+        # INSERT CODE TO CONVERT TO ALEX'S STYLE/SHAPE OF DATA
+
+        # Format from Accumap to desired shape
+        file_data = self.formatAccumapData(file_data)  # THIS FUNCTION CURRENTLY RETURNS WHAT YOU PUT IN
+
+        # END OF CODE TO CONVERT TO ALEX'S STYLE/SHAPE OF DATA
 
         # Trim the data to contain only the desired features
         file_data = self.trimFeatures(file_data)
@@ -121,7 +126,7 @@ class AccumapCsvProcessor:
             file_data = self.trimSteadyState(file_data)
 
         # Save the formatted data as a csv in the output directory
-        self.saveNumpyAsCsv(filename, file_data)
+        self.saveDataFrameAsCsv(filename, file_data)
 
         return
 
