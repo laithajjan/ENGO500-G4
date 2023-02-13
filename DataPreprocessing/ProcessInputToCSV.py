@@ -12,10 +12,14 @@ filesOnly = [f for f in listdir(inputDir) if isfile(join(inputDir, f))]
 for file in filesOnly:
 
     # Read content of Excel file
-    read_file = pd.read_excel(inputDir + file)
+    read_file = pd.read_excel(inputDir + file, skiprows=[0], header=0)
+
+    # Replace line breaks in column headers with spaces
+    read_file.columns = read_file.columns.str.replace('\n', ' ', regex=True)
 
     # Get file name without extension
     fileName = file.split(".")[0]
 
     # Write the dataframe object into csv file
-    read_file.to_csv(outputDir+fileName+".csv", index=False, header=True)
+    read_file.to_csv(outputDir+fileName+".csv", index=False)
+    print('Saved ' + fileName + ' to a csv')
