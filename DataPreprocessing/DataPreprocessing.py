@@ -7,7 +7,7 @@ input_directory = "../Data/UnprocessedData/"
 output_directory = "../Data/ProcessedData/"
 
 # Set the column numbers of the features to extract
-feature_list = ['UWI', 'WellName']
+feature_list = ['MonInjSteam(m3)']
 
 # Create a new AccumapCsvPreprocessor with the input and output directories
 accumapCsvProcessor = AccumapCsvProcessor.AccumapCsvProcessor(input_directory, output_directory,

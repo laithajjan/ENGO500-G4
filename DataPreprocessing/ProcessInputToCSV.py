@@ -15,7 +15,7 @@ for file in filesOnly:
     read_file = pd.read_excel(inputDir + file, skiprows=[0], header=0)
 
     # Replace line breaks in column headers with spaces
-    read_file.columns = read_file.columns.str.replace('\n', ' ', regex=True)
+    read_file.columns = read_file.columns.str.replace('\n', '', regex=True)
 
     # Get file name without extension
     fileName = file.split(".")[0]

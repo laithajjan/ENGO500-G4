@@ -1,6 +1,7 @@
 from os import listdir
 from os.path import isfile, join
 import pandas as pd
+import numpy as np
 
 
 class AccumapCsvProcessor:
@@ -48,13 +49,13 @@ class AccumapCsvProcessor:
         return csv
 
     def formatAccumapData(self, data):
-        formatted_data = data
+        formatted_data = data.groupby('ProdDate').aggregate(np.sum)
 
         return formatted_data
 
     def saveDataFrameAsCsv(self, filename, data):
         # Convert to pd DataFrame, then convert to csv, save to output directory with no header
-        pd.DataFrame(data).to_csv(self.output_directory + filename, index=False)
+        pd.DataFrame(data).to_csv(self.output_directory + filename, index=True)
 
         return
 
