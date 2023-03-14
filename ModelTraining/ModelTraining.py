@@ -14,7 +14,7 @@ output_directory = "../Models/"
 
 # Read in the processed data
 df = pd.read_csv(input_directory + "KitchenSink.csv", header=0)
-train_df, test_df = train_test_split(df, test_size=0.5, random_state=42)
+train_df, test_df = train_test_split(df, test_size=0.9)
 
 # Display the headers in the csv
 print(df.head(0))
@@ -48,8 +48,8 @@ y_test = df[target].values
 y_pred = model.predict(X_test)
 
 # Plot the predicted vs actual values over the dates
-plt.plot(df["ProdDate"], y_test, label="Actual")
-plt.plot(df["ProdDate"], y_pred, label="Predicted")
+plt.plot(df["ProdDate"], y_test, label="Actual Oil Produced")
+plt.plot(df["ProdDate"], y_pred, label="Predicted Oil Produced")
 plt.plot(df["ProdDate"], X_test, label="Injected Steam")
 # Rotate x-axis labels by 90 degrees
 plt.xticks(df.index[::6], rotation=90)

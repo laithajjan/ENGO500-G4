@@ -81,6 +81,7 @@ class AccumapCsvProcessor:
         return data
 
     def trimSteadyState(self, data):
+        # Needs to be changed so that the MonSteamInj column is used instead
         steam_injected_column = data[:, 0]
         last_value = float(steam_injected_column[0])
         percent_list = [999]
