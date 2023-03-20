@@ -81,44 +81,21 @@ class AccumapCsvProcessor:
         return data
 
     def trimSteadyState(self, data):
-        # Needs to be changed so that the MonSteamInj column is used instead
-        steam_injected_column = data[:, 0]
-        last_value = float(steam_injected_column[0])
-        percent_list = [999]
+        # Calculate the percent change in monthly steam injection
+        data['Percentage_Change_Monthly_Injected_Steam'] = abs(data['MonInjSteam(m3)'].pct_change() * 100)
 
-        for value in steam_injected_column[1:]:
-            value = float(value)
-            last_value = float(last_value)
+        steady_state_data = data[(data['MonInjSteam(m3)'] != 0) & (data['Percentage_Change_Monthly_Injected_Steam'] <
+                                                                   self.max_change_percent)]
 
-            if value == 0:
-                percent_change = 999
-            else:
-                percent_change = abs((value - last_value) / value * 100)
-
-            percent_list.append(percent_change)
-            last_value = value
-
-        trimmed_data = []
-        trimmed_data_index = 0
-
-        for index, percent in enumerate(percent_list):
-            if percent <= self.max_change_percent:
-                trimmed_data.append(data[index, :])
-                trimmed_data_index += 1
-
-        return trimmed_data
+        return steady_state_data
 
     def preprocessFile(self, filename):
         self.debugPrint("Preprocessing " + filename)
         # Load the csv file into a numpy array
         file_data = self.loadCsvAsDataFrame(filename)
 
-        # INSERT CODE TO CONVERT TO ALEX'S STYLE/SHAPE OF DATA
-
         # Format from Accumap to desired shape
-        file_data = self.formatAccumapData(file_data)  # THIS FUNCTION CURRENTLY RETURNS WHAT YOU PUT IN
-
-        # END OF CODE TO CONVERT TO ALEX'S STYLE/SHAPE OF DATA
+        file_data = self.formatAccumapData(file_data)
 
         # Trim the data to contain only the desired features
         file_data = self.trimFeatures(file_data)

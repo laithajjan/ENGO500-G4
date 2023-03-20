@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
 import matplotlib.pyplot as plt
 from time import time
 from joblib import dump
@@ -10,7 +11,8 @@ import seaborn as sns
 
 
 from sklearn.model_selection import train_test_split
-
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
 
 # Set the input directory and output directory
 input_directory = "../Data/ProcessedData/"
@@ -19,18 +21,34 @@ output_directory = "../Models/"
 
 # Read in the processed data
 df = pd.read_csv(input_directory + "KitchenSink.csv", header=0)
-train_df, test_df = train_test_split(df, test_size=0.9)
+df = df[20:]
+df.plot(kind='line') # bar can be replaced by
+# scatter or line or even left as default
+plt.show()
+train_df, test_df = train_test_split(df, test_size=0.3)
+poly = PolynomialFeatures(degree=2)
+# train_df, test_df = train_test_split(df, test_size=0.50, random_state=1)
+
 
 
 # Display the headers in the csv
 print(df.head(0))
-feature_list = ['MonInjSteam(m3)']
+feature_list = ['MonInjSteam(m3)', 'PrdHours(hr)', 'CumInjSteam(m3)']
 #target = ['MonthlyOil(m3)', 'MonthlyGas(E3m3)', 'MonthlyWater(m3)']
 target = ['MonthlyOil(m3)']
 
 
 X = train_df[feature_list].values
+X = poly.fit_transform(X)
 y = train_df[target].values
+X_test = poly.fit_transform(train_df[feature_list].values)
+y_test = train_df[target].values
+
+# Test scaling
+#pipe = make_pipeline(StandardScaler(), LinearRegression())
+#pipe.fit(X, y)
+#test_r2 = pipe.score(X_test, y_test)
+#print('Test r^2' + ' ' + str(test_r2))
 
 
 # Fit the data to the model
@@ -55,17 +73,17 @@ print("Coefficients:", coef)
 
 
 # Use the model to make predictions
-X_test = df[feature_list].values
-y_test = df[target].values
+X_test = test_df[feature_list].values
+y_test = test_df[target].values
 y_pred = model.predict(X_test)
 
 
 # Plot the predicted vs actual values over the dates
-plt.plot(df["ProdDate"], y_test, label="Actual Oil Produced")
-plt.plot(df["ProdDate"], y_pred, label="Predicted Oil Produced")
-plt.plot(df["ProdDate"], X_test, label="Injected Steam")
+plt.plot(test_df["ProdDate"], y_test, label="Actual Oil Produced")
+plt.plot(test_df["ProdDate"], y_pred, label="Predicted Oil Produced")
+plt.plot(test_df["ProdDate"], X_test, label="Injected Steam")
 # Rotate x-axis labels by 90 degrees
-plt.xticks(df.index[::6], rotation=90)
+plt.xticks(test_df.index[::6], rotation=90)
 plt.xlabel("Date")
 plt.ylabel("Oil Production")
 plt.title("Actual vs Predicted Oil Production over Dates")

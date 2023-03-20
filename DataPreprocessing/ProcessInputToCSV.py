@@ -12,10 +12,11 @@ filesOnly = [f for f in listdir(inputDir) if isfile(join(inputDir, f))]
 for file in filesOnly:
 
     # Read content of Excel file
-    read_file = pd.read_excel(inputDir + file, skiprows=[0], header=0)
+    read_file = pd.read_excel(inputDir + file, skiprows=[], header=0)
 
     # Replace line breaks in column headers with spaces
     read_file.columns = read_file.columns.str.replace('\n', '', regex=True)
+    read_file.columns = read_file.columns.str.replace('_x000D_', '', regex=True)
 
     # Get file name without extension
     fileName = file.split(".")[0]
