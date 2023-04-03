@@ -1,4 +1,4 @@
-# Script to perform the training of the model
+# Script to perform the training of the combined_model
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
@@ -20,8 +20,7 @@ output_directory = "../Models/"
 
 
 # Read in the processed data
-df = pd.read_csv(input_directory + "KitchenSink.csv", header=0)
-df = df[20:]
+df = pd.read_csv(input_directory + "combined_data.csv", header=0)
 df.plot(kind='line') # bar can be replaced by
 # scatter or line or even left as default
 plt.show()
@@ -51,17 +50,16 @@ y_test = train_df[target].values
 #print('Test r^2' + ' ' + str(test_r2))
 
 
-# Fit the data to the model
+# Fit the data to the combined_model
 start_time = time()
 model = LinearRegression().fit(X, y)
 training_time = time() - start_time
 print('Training time: ' + str(training_time))
-dump(model, output_directory + 'KitchenSinkBasicModel.pkl')
 
 
 
 
-# Get the coefficient of determination (R^2) to evaluate the goodness of fit of the model
+# Get the coefficient of determination (R^2) to evaluate the goodness of fit of the combined_model
 r_squared = model.score(X, y)
 print("Coefficient of determination (R^2):", r_squared)
 
@@ -72,7 +70,7 @@ print("Intercept:", intercept)
 print("Coefficients:", coef)
 
 
-# Use the model to make predictions
+# Use the combined_model to make predictions
 X_test = test_df[feature_list].values
 y_test = test_df[target].values
 y_pred = model.predict(X_test)
@@ -130,7 +128,7 @@ plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--', lw=2
 plt.show()
 
 
-# Use the model to make predictions on the test set
+# Use the combined_model to make predictions on the test set
 X_test = test_df[feature_list].values
 y_test = test_df[target].values
 y_pred = model.predict(X_test)

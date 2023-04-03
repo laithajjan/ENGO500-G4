@@ -16,6 +16,7 @@ for file in filesOnly:
 
     # Replace line breaks in column headers with spaces
     read_file.columns = read_file.columns.str.replace('\n', '', regex=True)
+    read_file.columns = read_file.columns.str.replace(' ', '', regex=True)
     read_file.columns = read_file.columns.str.replace('_x000D_', '', regex=True)
 
     # Get file name without extension

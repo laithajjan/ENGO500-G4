@@ -16,7 +16,7 @@ input_directory = "../Data/ProcessedData/"
 output_directory = "../Models/"
 
 # Read in the processed data
-data = pd.read_csv(input_directory + "EdamWest.csv", header=0)
+data = pd.read_csv(input_directory + "combined_data.csv", header=0)
 nan_values = data[data.isna().any(axis=1)]
 print(nan_values)
 # Calculate the steam-oil ratio (SOR)
@@ -38,18 +38,18 @@ plt.show()
 
 # Define input features and target
 # feature_list = ['MonInjSteam(m3)', 'MonthlyOil(m3)', 'MonInjGas(E3m3)', 'PrdHours(hr)', 'InjHours(hr)', 'CumInjSteam(m3)', 'CumInjGas(E3m3)', 'CumPrdOil(m3)']
-features = ['MonInjSteam(m3)', 'CumInjSteam(m3)', 'PrdHours(hr)', 'MonInjGas(E3m3)', 'CumInjGas(E3m3)']
+features = ['MonthlyOil(m3)', 'PrdHours(hr)', 'MonInjGas(E3m3)']
 print('features:' + str(features))
-target = 'SOR'
+target = 'MonInjSteam(m3)'
 print('target:' + str(target))
 
 # Split data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(data[features], data[target], test_size=0.2, random_state=42)
 
-# Create and train the model
+# Create and train the combined_model
 model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
-# model = LinearRegression().fit(X_train, y_train)
+# combined_model = LinearRegression().fit(X_train, y_train)
 
 # Predict the target variable on the test set
 y_pred = model.predict(X_test)
@@ -104,7 +104,7 @@ importances = model.feature_importances_
 for feature, importance in zip(features, importances):
     print(f"{feature}: {importance:.2f}")
 
-# Plot feature importances
+# Plot feature importance
 plt.bar(features, importances)
 plt.xlabel('Features')
 plt.ylabel('Importance')
@@ -122,14 +122,14 @@ features_with_interaction = features + ['NCG_Steam_interaction', 'NCG_PrdHours_i
 X_train_int, X_test_int, y_train_int, y_test_int = train_test_split(data[features_with_interaction], data[target],
                                                                     test_size=0.2, random_state=42)
 
-# Create and train the model with interaction features
+# Create and train the combined_model with interaction features
 model_int = RandomForestRegressor(n_estimators=100, random_state=42)
 model_int.fit(X_train_int, y_train_int)
 
 # Predict the target variable on the test set with interaction features
 y_pred_int = model_int.predict(X_test_int)
 
-# Calculate evaluation metrics for the model with interaction features
+# Calculate evaluation metrics for the combined_model with interaction features
 mse_int = mean_squared_error(y_test_int, y_pred_int)
 r2_int = r2_score(y_test_int, y_pred_int)
 
@@ -186,8 +186,8 @@ plt.show()
 data['ProdDate'] = pd.to_datetime(data['ProdDate'])
 
 # Split data into two subsets based on whether NCG was injected or not
-data_no_ncg = data[data['CumInjGas(E3m3)'] < 4000]
-data_with_ncg = data[data['CumInjGas(E3m3)'] > 4000]
+data_no_ncg = data[data['CumInjGas(E3m3)'] == 0]
+data_with_ncg = data[data['CumInjGas(E3m3)'] > 0]
 
 # Calculate the average SOR for each time period
 avg_sor_no_ncg = data_no_ncg['SOR'].mean()
@@ -251,3 +251,4 @@ from scipy.stats import ttest_ind
 t_stat, p_value = ttest_ind(data_no_ncg['SOR'], data_with_ncg['SOR'])
 print(f"T-test statistic: {t_stat:.2f}")
 print(f"P-value: {p_value:.5f}")
+
