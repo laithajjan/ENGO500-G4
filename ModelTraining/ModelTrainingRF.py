@@ -12,9 +12,8 @@ output_directory = "../Models/"
 
 # Read in the processed data
 data = pd.read_csv(input_directory + "Wabiskaw.csv", header=0)
-clearwater_data = pd.read_csv(input_directory + 'Clearwater.csv', header=0)
 
-data = data[data['CumulativeMonth'] > 0]
+data = data[data['CumulativeMonth'] > 450]
 
 scale = pd.DataFrame()
 scale['PrdHours(hr)'] = data['PrdHours(hr)']
