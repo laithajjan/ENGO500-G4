@@ -1,0 +1,1 @@
+Unnamed: 0,ProdDate,MonInjSteam(m3),MonthlyOil(m3),MonInjGas(E3m3),CumInjGas(E3m3),PrdHours(hr),InjHours(hr),CumInjSteam(m3),CumPrdOil(m3),CalDlyOil(m3/d),CalInjGas(E3m3/d),CalInjSteam(m3/d),SOR,percent_change_SOR,is_interpolated,CumPrdOilSinceSteamInj(m3),OilRate,SteamRate,SteamRateOverOilRate

@@ -230,6 +230,7 @@ class AccumapCsvProcessor:
             data['NCG/S'] = data['MonInjGas(m3)']/data['MonInjSteam(m3)']
             data['time'] = data['OilRate']/((data['WOR(m3/m3)']**2)*0.04 + 0.59*data['WOR(m3/m3)'] + 3)
             data['NewOilRate'] = data['OilRate']*data['time']
+            data['Prod/Inj'] = data['PrdHours(hr)']/data['InjHours(hr)']
 
         return data
 
