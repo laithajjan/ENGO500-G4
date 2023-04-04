@@ -11,7 +11,7 @@ model_directory = "../Models/"
 ncg_model = joblib.load(model_directory + 'OptimalNcgModel.pkl')
 
 
-def process_csv_file(file_path, model):
+def process_csv_file(file_path, model, name):
     data = pd.read_csv(file_path, header=0)
     data = data[data['CumulativeMonth'] > 0]
     # data = data[data['MonInjGas(m3)'] == 0]
@@ -49,8 +49,11 @@ def process_csv_file(file_path, model):
     plt.xlabel('Cumulative Month')
     plt.ylabel('Steam (m3/d)')
     plt.legend()
-    plt.title('Steam Injection values for site: Clearwater')
-    #plt.show()
+    plt.title('Steam Injection values for site: ' + name)
+    plt.show()
+
+    # Calculate the actual and predicted Ncg/Steam ratios
+    data['actual_ncg_steam_ratio'] = data['MonInjGas(m3)'] / data['MonInjSteam(m3)']
 
     steam_saved = zero_ncg_data['steam'].sum() - data['MonInjSteam(m3)'].sum()
     print('The Steam Required without optimal ncg: ' + str(data['MonInjSteam(m3)'].sum()))
@@ -65,4 +68,4 @@ csv_files = [f for f in os.listdir(input_directory) if f.endswith('.csv')]
 for csv_file in csv_files:
     file_path = os.path.join(input_directory, csv_file)
     print(f"Processing {csv_file}")
-    process_csv_file(file_path, ncg_model)
+    process_csv_file(file_path, ncg_model, csv_file)
