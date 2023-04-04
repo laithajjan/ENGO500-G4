@@ -6,7 +6,7 @@
 - Paul-Samuel Leitão
 - Shruti Dua
 
-**Advisor:** Alex Filstein P.Eng, Conocophilips
+**Advisor:** Alex Filstein P.Eng, ConocoPhillips
 
 **Affiliation:** University of Calgary, Schulich School of Engineering
 
