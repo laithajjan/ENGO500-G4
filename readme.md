@@ -26,7 +26,7 @@ AccuMap, a petroleum industry software, was used to extract monthly data from SA
 
 ### Machine Learning Model
 
-NumPy and scikit-learn libraries were used to build the machine learning model. Well-site data extracted from AccuMap is transformed from .xls to .csv format for preprocessing in Python.
+Pandas and scikit-learn libraries were used to build the machine learning model. Well-site data extracted from AccuMap is transformed from .xls to .csv format for preprocessing in Python.
 
 ### Methodology
 
