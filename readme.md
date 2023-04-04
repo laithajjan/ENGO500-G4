@@ -36,6 +36,11 @@ Data from facilities with NCG co-injection at SAGD sites are used to train the m
 ### Results
 By running the ModelUtilization.py script, a user can generate predicted steam injection values required for the site under optimal NCG conditions. This predicted steam injected required is then used in a plot with the actual values used to compare. The difference is then calculated to compute a percent steam injected saved for the site.
 
+![image](https://user-images.githubusercontent.com/77460425/229849377-1482256d-6dc5-41df-b830-a3d232d5313c.png)
+![image](https://user-images.githubusercontent.com/77460425/229849436-27b9aba2-3363-4a2e-9169-bd42ab664527.png)
+
+
+
 ## Abstract
 
 Steam Assisted Gravity Drainage (SAGD) is a process used to extract heavy oil and bitumen from deep underground. Non-condensable gas (NCG) can reduce the amount of steam required, reducing the economic and environmental impacts. AccuMap was utilized to extract data from well sites in Northern Alberta. A machine learning regression model was created using Python to process the data and analyze the impacts of NCG implementation at existing SAGD sites.
