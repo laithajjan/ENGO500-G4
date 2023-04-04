@@ -22,7 +22,7 @@ The objective is to analyze monthly data from SAGD sites in Northern Alberta to 
 
 ### Software
 
-AccuMap, a petroleum industry software, was used to extract monthly data from SAGD sites that use NCG and those that have not implemented NCG. Parameters extracted include Cumulative Steam Injected, Cumulative Oil Produced, Number of well pairs, etc.
+AccuMap, a petroleum industry software, was used to extract monthly data from SAGD sites that use NCG and those that have not implemented NCG. 
 
 ### Machine Learning Model
 
