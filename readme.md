@@ -35,7 +35,7 @@ Data from facilities with NCG co-injection at SAGD sites are used to train the m
 
 ### Results
 
-![image](https://user-images.githubusercontent.com/77460425/229857680-0e619ab1-1a5a-4612-b356-7dfa5ef2e2d9.png)![image](https://user-images.githubusercontent.com/77460425/229858396-271cb2af-bad1-42b1-8fdf-c71013aa8136.png)
+![image](https://user-images.githubusercontent.com/77460425/229862607-28a1c42f-a3a5-4c98-b0d8-90349a862334.png)
 
 By running the ModelUtilization.py script, a user can generate predicted steam injection values required for the site under optimal NCG conditions. This predicted steam injected required is then used in a plot with the actual values used to compare. The difference is then calculated to compute a percent steam injected saved for the site.
 
