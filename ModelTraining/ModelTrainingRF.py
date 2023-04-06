@@ -5,6 +5,8 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import joblib
+from sklearn.metrics import mean_squared_error
+from math import sqrt
 
 # Set the input directory and output directory
 input_directory = "../Data/ProcessedData/"
@@ -45,7 +47,7 @@ print("NCG Model Scores:")
 print("Train score: ", ncg_train_score)
 print("Test score: ", ncg_test_score)
 print("Cross-validation scores: ", ncg_cv_scores)
-print("Mean Squared Error: ", mean_squared_error(ncg_y_test, ncg_model.predict(ncg_X_test)))
+print("Root Mean Squared Error: ", str(sqrt(mean_squared_error(ncg_y_test, ncg_model.predict(ncg_X_test)))))
 print("R^2 Score: ", r2_score(ncg_y_test, ncg_model.predict(ncg_X_test)))
 
 # Calculate VIF scores
