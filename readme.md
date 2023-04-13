@@ -30,7 +30,7 @@ Pandas and scikit-learn libraries were used to build the machine learning model.
 
 ### Methodology
 
-Data from facilities with NCG co-injection at SAGD sites are used to train the machine learning model. The model predicts values for similar sites, enabling cost-benefit analysis of NCG co-injection implementation. The model's quality is validated using the 𝑅^2 value and cross-validation.
+Data from facilities with NCG co-injection at SAGD sites are used to train the machine learning model. The model predicts values for similar sites, enabling cost-benefit analysis of NCG co-injection implementation. The model's quality is validated using the RMSE value and cross-validation.
 
 
 ### Results
