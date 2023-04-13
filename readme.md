@@ -50,9 +50,3 @@ By running the ModelUtilization.py script, a user can generate predicted steam i
 ![image](https://user-images.githubusercontent.com/77460425/229879634-1035fc31-7cac-4ad7-9194-ae68aa13aeeb.png)
 
 
-
-
-## Abstract
-
-Steam Assisted Gravity Drainage (SAGD) is a process used to extract heavy oil and bitumen from deep underground. Non-condensable gas (NCG) can reduce the amount of steam required, reducing the economic and environmental impacts. AccuMap was utilized to extract data from well sites in Northern Alberta. A machine learning regression model was created using Python to process the data and analyze the impacts of NCG implementation at existing SAGD sites.
-
