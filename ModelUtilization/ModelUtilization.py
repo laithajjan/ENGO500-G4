@@ -19,6 +19,7 @@ def process_csv_file(file_path, model, name, optimal_ncg=False):
 
     if optimal_ncg:
         data['Ncg/steam'] = optimal_ncg_model.predict(data['CalDlyOil(m3/d)'].values.reshape(-1, 1))
+        data = data[data['MonInjGas(m3)'] == 0].copy()
 
     data[target] = model.predict(data[features])
     data['predicted_steam'] = data['SOR'] * data['CalDlyOil(m3/d)']

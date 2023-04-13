@@ -13,7 +13,7 @@ class AccumapCsvProcessor:
     # Class constructor
     def __init__(self, input_directory, output_directory, header_row=0, start_row=1, debug_printing=False,
                  feature_list=[], steady_state_only=True, max_change_percent=30, outlier_removal_percent=100, sigma=2,
-                 show_plots=True, combine_data=True, ncg_only=False):
+                 show_plots=True, combine_data=True, ncg_only=False, remove_outliers=False):
 
         # Set the directories to be used
         self.input_directory = input_directory
@@ -53,6 +53,9 @@ class AccumapCsvProcessor:
 
         # Only include ncg sites
         self.ncg_only = ncg_only
+
+        # Outlier Remover Boolean
+        self.remove_outliers = remove_outliers
 
         return
 
@@ -108,21 +111,7 @@ class AccumapCsvProcessor:
         return
 
     def trimFeatures(self, data):
-        # data = data[self.feature_list].copy()
-
-        data = data[['MonthlyOil(m3)', 'AvgDlyOil(m3/d)', 'CalDlyOil(m3/d)', 'CumPrdOil(m3)',
-                     'MonthlyGas(E3m3)', 'AvgDlyGas(E3m3/d)', 'CalDlyGas(E3m3/d)',
-                     'CumPrdGas(E3m3)', 'MonthlyWater(m3)', 'AvgDlyWtr(m3/d)',
-                     'CalDlyWtr(m3/d)', 'CumPrdWtr(m3)', 'MonthlyFluid(m3)',
-                     'AvgDlyFluid(m3/d)', 'CalDlyFluid(m3/d)', 'CumPrdFluid(m3)',
-                     'MonInjGas(E3m3)', 'AvgInjGas(E3m3/d)', 'CalInjGas(E3m3/d)',
-                     'CumInjGas(E3m3)', 'MonInjWtr(m3)', 'AvgInjWtr(m3/d)',
-                     'CalInjWtr(m3/d)', 'CumInjWtr(m3)', 'MonInjSlv(E3m3)',
-                     'AvgInjSlv(E3m3/d)', 'CalInjSlv(E3m3/d)', 'CumInjSlv(E3m3)',
-                     'InjHours(hr)', 'PrdHours(hr)', 'Inj/PrdHours(hr)', 'WCT(%)', 'OCT(%)', 'GOR(m3/m3)',
-                     'WGR(m3/E3m3)', 'WOR(m3/m3)',
-                     'NbrofWells', 'MonInjSteam(m3)', 'AvgInjSteam(m3/d)', 'CalInjSteam(m3/d)',
-                     'CumInjSteam(m3)']]
+        data = data[self.feature_list].copy()
 
         return data
 
@@ -130,34 +119,33 @@ class AccumapCsvProcessor:
 
         self.debugPrint('The number of raw rows of the dataset: ' + str(raw_data.shape[0]))
 
+        # Trim the rows with 0 steam injection
         trimmed_data = raw_data[raw_data['CumInjSteam(m3)'] != 0].copy()
-        trimmed_data['CumulativeMonth'] = np.arange(len(trimmed_data))
-        trimmed_data['MonthsNCG'] = (trimmed_data['CumInjGas(E3m3)'] > 0).cumsum()
 
         trimmed_data = self.engineerFeatures(trimmed_data)
 
-        trimmed_data = trimmed_data[1:]
+        if self.remove_outliers:
+            # Calculate and remove rows with a percent change that is outside the outlier threshold
+            trimmed_data = trimmed_data[trimmed_data['percent_change_SOR'] < self.outlier_removal_percent]
+            self.debugPrint(
+                'The number of rows with SOR percent change less than ' + str(self.outlier_removal_percent) +
+                ' percent of the dataset: ' + str(trimmed_data.shape[0]))
 
-        # Calculate and remove rows with a percent change that is outside the outlier threshold
-        # trimmed_data = trimmed_data[trimmed_data['percent_change_SOR'] < self.outlier_removal_percent]
-        # self.debugPrint('The number of rows with SOR percent change less than ' + str(self.outlier_removal_percent) +
-        # ' percent of the dataset: ' + str(trimmed_data.shape[0]))
+            # Calculate the std dev of the percent change SOR
+            std_dev_percent_change_sor = trimmed_data['percent_change_SOR'].std()
+            self.debugPrint('The standard deviation of the percent change SOR: ' + str(std_dev_percent_change_sor))
 
-        # Calculate the std dev of the percent change SOR
-        # std_dev_percent_change_sor = trimmed_data['percent_change_SOR'].std()
-        # self.debugPrint('The standard deviation of the percent change SOR: ' + str(std_dev_percent_change_sor))
+            # Replace rows that are less than the specified standard deviations with interpolated values
+            mask = abs(trimmed_data['percent_change_SOR']) <= std_dev_percent_change_sor * self.sigma
+            columns_to_interpolate = ['MonInjSteam(m3)', 'MonthlyOil(m3)', 'percent_change_SOR', 'CalInjSteam(m3/d)',
+                                      'CalDlyOil(m3/d)']
+            trimmed_data.loc[~mask, columns_to_interpolate] = np.nan
 
-        # Replace rows that are less than the specified standard deviations with interpolated values
-        # mask = abs(trimmed_data['percent_change_SOR']) <= std_dev_percent_change_sor * self.sigma
-        # columns_to_interpolate = ['MonInjSteam(m3)', 'MonthlyOil(m3)', 'percent_change_SOR', 'CalInjSteam(m3/d)',
-        # 'CalDlyOil(m3/d)']
-        # trimmed_data.loc[~mask, columns_to_interpolate] = np.nan
+            # Create a new column to track which values are interpolated
+            trimmed_data['is_interpolated'] = False
 
-        # Create a new column to track which values are interpolated
-        # trimmed_data['is_interpolated'] = False
-
-        # Set the is_interpolated column to True for interpolated values
-        # trimmed_data.loc[~mask, 'is_interpolated'] = True
+            # Set the is_interpolated column to True for interpolated values
+            trimmed_data.loc[~mask, 'is_interpolated'] = True
 
         num_nans = trimmed_data.isna().sum().sum()
         self.debugPrint(f"There are {num_nans} NaN values in the DataFrame.")
@@ -172,13 +160,17 @@ class AccumapCsvProcessor:
         nan_columns = trimmed_data.columns[trimmed_data.isnull().any(axis=0)].tolist()
 
         if not nan_rows.empty:
+            # Display rows/columns that contain NaN values
             self.debugPrint("Rows with NaN values:")
             self.debugPrint(nan_rows.index)
             self.debugPrint("Columns with NaN values:")
             self.debugPrint(nan_columns)
+
+            # Drop NaN values
             self.debugPrint("Attempting to drop rows with Nan values...")
             trimmed_data = trimmed_data.dropna()
             nan_rows = trimmed_data[trimmed_data.isnull().any(axis=1)]
+
             if not nan_rows.empty:
                 self.debugPrint("Rows with NaN values:")
                 self.debugPrint(nan_rows.index)
@@ -191,18 +183,15 @@ class AccumapCsvProcessor:
         self.debugPrint('The number of rows with SOR percent change less than ' + str(self.sigma) +
                         ' sigma of the dataset: ' + str(trimmed_data.shape[0]))
 
-        # if not (trimmed_data[trimmed_data['is_interpolated'] == True]).empty:
-        # self.debugPrint(
-        # 'Number of interpolated values: ' + str(trimmed_data[trimmed_data['is_interpolated'] == True].count))
-
         return trimmed_data
 
     def engineerFeatures(self, data):
         # Check if dependent columns are present
         if all(elem in self.feature_list for elem in
                ['MonthlyOil(m3)', 'MonInjSteam(m3)', 'InjHours(hr)', 'PrdHours(hr)']):
-
             # Calculate Engineered Features
+            data['CumulativeMonth'] = np.arange(len(data))
+            data['MonthsNCG'] = (data['CumInjGas(E3m3)'] > 0).cumsum()
             data['SOR'] = data['MonInjSteam(m3)'] / data['MonthlyOil(m3)']
             data['MonInjGas(m3)'] = data['MonInjGas(E3m3)'] * 1000
             data['CumInjGas(m3)'] = data['CumInjGas(E3m3)'] * 1000
