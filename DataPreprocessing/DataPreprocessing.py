@@ -19,7 +19,7 @@ feature_list = ['MonthlyOil(m3)', 'AvgDlyOil(m3/d)', 'CalDlyOil(m3/d)', 'CumPrdO
 # Create a new AccumapCsvPreprocessor with the input and output directories
 accumapCsvProcessor = AccumapCsvProcessor.AccumapCsvProcessor(input_directory, output_directory,
                                                               feature_list=feature_list, debug_printing=True,
-                                                              steady_state_only=True, show_plots=False, ncg_only=False,
+                                                              steady_state_only=True, show_plots=True, ncg_only=False,
                                                               sigma=3)
 
 # Run the preprocessing for the set directories
