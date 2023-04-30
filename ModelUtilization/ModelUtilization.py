@@ -19,38 +19,43 @@ def process_csv_file(file_path, model, name, optimal_ncg=False):
 
     if optimal_ncg:
         data['Ncg/steam'] = optimal_ncg_model.predict(data['CalDlyOil(m3/d)'].values.reshape(-1, 1))
-        data = data[data['MonInjGas(m3)'] == 0].copy()
+        data = data[data['MonIn jGas(m3)'] == 0].copy()
 
-    data[target] = model.predict(data[features])
-    data['predicted_steam'] = data['SOR'] * data['CalDlyOil(m3/d)']
+    if not data.empty:
+        data[target] = model.predict(data[features])
+        data['predicted_steam'] = data['SOR'] * data['CalDlyOil(m3/d)']
 
-    ncg_vs_zero_ncg = pd.DataFrame()
-    ncg_vs_zero_ncg['steam_difference'] = data['CalInjSteam(m3/d)'] - data['CalInjSteam(m3/d)']
+        ncg_vs_zero_ncg = pd.DataFrame()
+        ncg_vs_zero_ncg['steam_difference'] = data['CalInjSteam(m3/d)'] - data['CalInjSteam(m3/d)']
 
-    # Plotting of the model predictions
-    plt.figure(figsize=(10, 6))
-    plt.scatter(data['CumulativeMonth'], data['CalInjSteam(m3/d)'],
-                label='Original Daily Injected Steam (m3/d)', alpha=0.7)
-    plt.scatter(data['CumulativeMonth'], data['predicted_steam'],
-                label='Predicted Daily Injected Steam (m3/d)', alpha=0.7)
+        # Plotting of the model predictions
+        plt.figure(figsize=(10, 6))
+        plt.scatter(data['CumulativeMonth'], data['CalInjSteam(m3/d)'],
+                    label='Original Daily Injected Steam (m3/d)', alpha=0.7)
+        plt.scatter(data['CumulativeMonth'], data['predicted_steam'],
+                    label='Predicted Daily Injected Steam (m3/d)', alpha=0.7)
 
-    steam_saved = data['predicted_steam'].sum() - data['CalInjSteam(m3/d)'].sum()
-    percent_steam_saved = 100 * steam_saved / (data['CalInjSteam(m3/d)']).sum()
-    print('The Steam Required without optimal ncg: ' + str(data['CalInjSteam(m3/d)'].sum()))
-    print('The Steam Required with optimal ncg: ' + str(data['predicted_steam'].sum()))
-    print('The percent difference in non ncg vs ncg: ' +
-          str(percent_steam_saved))
+        steam_saved = data['predicted_steam'].sum() - data['CalInjSteam(m3/d)'].sum()
+        percent_steam_saved = 100 * steam_saved / (data['CalInjSteam(m3/d)']).sum()
 
-    plt.xlabel('Cumulative Month')
-    plt.ylabel('Calculated Daily Steam Produced (m3/d)')
-    plt.legend()
-    if optimal_ncg:
-        plt.title('Optimal NCG Injection Predictions: ' + name + ' ' + str(int(abs(percent_steam_saved))) +
-                  '% Steam Savings Possible')
-    else:
-        plt.title('Steam Injection values for site: ' + name + ' ' + str(int(abs(percent_steam_saved))) +
-                  '% Prediction Error')
-    plt.show()
+        plt.xlabel('Cumulative Month')
+        plt.ylabel('Calculated Daily Steam Produced (m3/d)')
+        plt.legend()
+        if optimal_ncg:
+            print('The Steam Required without optimal ncg: ' + str(data['CalInjSteam(m3/d)'].sum()))
+            print('The Steam Required with optimal ncg: ' + str(data['predicted_steam'].sum()))
+            print('The percent difference in non ncg vs ncg: ' +
+                  str(percent_steam_saved))
+            plt.title('Optimal NCG Injection Predictions: ' + name + ' ' + str(int(abs(percent_steam_saved))) +
+                      '% Steam Savings Possible')
+        else:
+            print('The Steam Required in the true values: ' + str(data['CalInjSteam(m3/d)'].sum()))
+            print('The Steam Required with predicted values: ' + str(data['predicted_steam'].sum()))
+            print('The percent difference in predicted and true: ' +
+                  str(percent_steam_saved))
+            plt.title('Steam Injection values for site: ' + name + ' ' + str(int(abs(percent_steam_saved))) +
+                      '% Prediction Error')
+        plt.show()
 
 
 csv_files = [f for f in os.listdir(input_directory) if f.endswith('.csv')]

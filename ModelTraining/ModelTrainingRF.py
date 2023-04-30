@@ -22,8 +22,8 @@ target = 'SOR'
 X_train, X_test, y_train, y_test = train_test_split(data[features], data[target], test_size=0.2,
                                                     random_state=42)
 
-model = RandomForestRegressor(n_estimators=100, random_state=42, max_depth=20, max_features=1,
-                              min_samples_leaf=1, min_samples_split=2)
+model = RandomForestRegressor(n_estimators=150, random_state=42, max_depth=10, max_features=1,
+                              min_samples_leaf=4, min_samples_split=10)
 model.fit(X_train, y_train)
 ncg_train_score = model.score(X_train, y_train)
 ncg_test_score = model.score(X_test, y_test)

@@ -19,7 +19,7 @@ target = 'Ncg/steam'
 # Create the NCG model
 ncg_X_train, ncg_X_test, ncg_y_train, ncg_y_test = train_test_split(ncg_data[features], ncg_data[target], test_size=0.2,
                                                                     random_state=42)
-ncg_model = RandomForestRegressor(n_estimators=50, random_state=42, max_depth=10, max_features=1.0,
+ncg_model = RandomForestRegressor(n_estimators=50, max_depth=10, max_features=1.0,
                                   min_samples_leaf=4, min_samples_split=10)
 
 ncg_model.fit(ncg_X_train, ncg_y_train)
