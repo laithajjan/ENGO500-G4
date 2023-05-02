@@ -12,7 +12,7 @@
 
 ## Introduction
 
-Steam assisted gravity drainage (SAGD) is widely used to extract oil from oil sands in Alberta. Non-Condensable Gas Co-Injection (NCG) uses Natural Gas Liquids (NGL) to reduce the amount of steam required for the process, reducing water and energy consumption. The project aims to analyze data from various SAGD sites and develop a machine learning regression model to forecast energy intensity reduction.
+Steam assisted gravity drainage (SAGD) is widely used to extract oil from oil sands in Alberta. Non-Condensable Gas Co-Injection (NCG) uses Natural Gas Liquids (NGL) to reduce the amount of steam required for the process, reducing water and energy consumption. This project aims to analyze data from various SAGD sites and develop a machine learning regression model to forecast energy intensity reduction.
 
 ## Project Summary
 
@@ -32,3 +32,24 @@ Pandas and scikit-learn libraries were used to build the machine learning model.
 
 Data from facilities with NCG co-injection at SAGD sites are used to train the machine learning model. The model predicts values for similar sites, enabling cost-benefit analysis of NCG co-injection implementation. The model's quality is validated using the RMSE value and cross-validation.
 
+## Results
+
+### Model Performance
+
+The RandomForestRegressor model was used for predicting steam injection requirements. The model achieved a train score of 0.801 and a test score of 0.784. Cross-validation scores ranged from 0.630 to 0.760, indicating reasonable consistency across different subsets of the training data. The model's root mean squared error (RMSE) was 0.414, and the normalized root mean squared error (NRMSE) was 0.077.
+
+### Feature Importance
+
+Feature importance analysis revealed that all features contributed to the model's predictive ability, with 'CalDlyOil(m3/d)' having the highest importance. The other features, such as 'NCG/steam', 'PrdHours(hr)', 'NbrofWells', and 'InjHours(hr)', also played significant roles in determining steam requirements.
+
+### Partial Dependence of SOR on NCG/Steam
+
+The partial dependence plot showed a clear relationship between the steam-to-oil ratio and the NCG-to-steam ratio. As the NCG/steam ratio increased, the steam-to-oil ratio decreased, indicating the effectiveness of NCG co-injection in reducing steam consumption and its associated environmental and economic impacts.
+
+### Steam Injection Savings
+
+The model was applied to various SAGD sites, estimating the potential savings in steam injection with the implementation of NCG co-injection. Results showed significant potential savings, ranging from 29% to 38% for different sites. This demonstrates the potential benefits of NCG co-injection for reducing the environmental and economic impacts of SAGD operations.
+
+## Conclusion
+
+The developed machine learning regression model successfully analyzed the impact of NCG co-injection on steam-to-oil ratios in SAGD operations. The model showed the potential for significant savings in steam injection, leading to reduced energy consumption and environmental impact. This information can help oil companies make informed decisions about implementing NCG co-injection in their SAGD operations.
